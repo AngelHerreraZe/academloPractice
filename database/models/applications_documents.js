@@ -3,17 +3,17 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class applications_documents extends Model {
+  class AplicationDocuments extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      applications_documents.belongsTo(models.Applications, { as: 'application', foreignKey: 'application_id' })
+      AplicationDocuments.belongsTo(models.Applications, { as: 'application', foreignKey: 'application_id' })
     }
   }
-  applications_documents.init({
+  AplicationDocuments.init({
 
     application_id: {
       allowNull: false,
@@ -37,10 +37,10 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     sequelize,
-    modelName: 'applications_documents',
+    modelName: 'AplicationDocuments',
     tableName: "applications_documents",
     timestamps: true
 
   });
-  return applications_documents;
+  return AplicationDocuments;
 };
