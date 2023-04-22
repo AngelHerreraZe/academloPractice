@@ -10,19 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      applications.belongsTo(models.Users, { as: 'user', foreignKey: 'user_id' })
+      applications.hasMany(models.ApplicationsPhotos, { as: 'photos', foreignKey: 'application_id' })
+      applications.hasMany(models.ApplicationsDocuments, { as: 'documents', foreignKey: 'application_id' })
+      applications.hasMany(models.ApplicationsPayments, { as: 'payments', foreignKey: 'application_id' })
     }
   }
   applications.init({
-   
+
     user_id: {
       type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
-      
-     },
 
-     legal_first_names: {
+    },
+
+    legal_first_names: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -37,60 +40,60 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
 
-    email:{
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
     phone: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
-    date_of_birth:{
+    date_of_birth: {
       type: DataTypes.DATE,
       allowNull: false,
-     },
+    },
 
-     gender:{
+    gender: {
       type: DataTypes.STRING,
       allowNull: false
-     },
+    },
 
-     passport_number:{
+    passport_number: {
       type: DataTypes.STRING,
       allowNull: false
-     },
+    },
 
-     passport_expiration_date: {
-       type: DataTypes.DATE,
-       allowNull: false
-     },
+    passport_expiration_date: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
 
-     residence: {
-        type: DataTypes.STRING,
-        allowNull: false
-     },
+    residence: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-     residence_address:{
-       type: DataTypes.STRING,
-       allowNull: false
-     },
+    residence_address: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-     job: {
-        type: DataTypes.STRING,
-        allowNull: false
-     },
+    job: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-     comments: {
+    comments: {
       type: DataTypes.TEXT,
       allowNull: false
-     },
+    },
 
-     status: {
-       type: DataTypes.STRING,
-       allowNull: false,
-     }
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
 
 
   }, {
