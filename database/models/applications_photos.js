@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      ApplicationsPhotos.belongsTo(models.Applications, {as:'application', foreignKey:'application_id'})
     }
   }
   ApplicationsPhotos.init({
@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.UUID,
-      
     },
     
     url: {

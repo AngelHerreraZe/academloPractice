@@ -10,13 +10,8 @@ module.exports = {
         primaryKey: true,
         foreignKey: true,
         type: Sequelize.UUID,
-
-
         onUpdate: 'CASCADE',
         onDelete: 'RESTRICT',
-
-
-
       },
       url: {
         type: Sequelize.TEXT,
